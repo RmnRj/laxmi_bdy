@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <title>Birthday Message</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  /* Inline styles for the new My Love for you button */
+  #loveLink{ display:flex; justify-content:center; margin-top:12px; }
+  #loveBtn{
+    background: linear-gradient(180deg,#ff4b5c,#e53935);
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    font-size:16px;
+    border-radius:28px;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(229,57,53,0.2);
+  }
+  #loveBtn:active{ transform:translateY(1px); }
+</style>
 </head>
 <body>
 
@@ -15,6 +30,11 @@
     <div id="imageBox"><img src="https://i.postimg.cc/gkwL82VD/Whats-App-Image-2025-12-15-at-00-55-51-dd918971.jpg"></div>
     <div id="mirrorText"></div>
     <div id="restart">Click me to watch again</div>
+
+    <!-- New lovely red button below the restart element -->
+    <div id="loveLink">
+      <a href="/love.html" aria-label="Open My Love For You page"><button id="loveBtn">My Love for you</button></a>
+    </div>
 </div>
 
 <script src="script.js"></script>
