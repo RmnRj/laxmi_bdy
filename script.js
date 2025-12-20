@@ -70,6 +70,7 @@ async function typeMirrorText(text){
 async function start(){
     // reset
     document.getElementById("restart").style.display = "none";
+    document.getElementById("loveLink").style.display = "none";
     document.getElementById("text").style.opacity = 0;
     document.getElementById("small").style.opacity = 0;
     document.getElementById("chatBubble").style.opacity = 0;
@@ -98,6 +99,7 @@ async function start(){
     
 
     document.getElementById("restart").style.display = "block";
+    document.getElementById("loveLink").style.display = "flex";
 }
 
 document.getElementById("restart").onclick = start;

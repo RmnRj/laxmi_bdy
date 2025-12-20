@@ -60,6 +60,9 @@
     // Clear growth when user chooses to show the emoji clearly on top
     stopGrowth();
     result.textContent = isYes ? "😊" : "🥲";
+    // Hide question and choices
+    document.getElementById('question').style.display = 'none';
+    document.getElementById('choices').style.display = 'none';
     // show again button
     again.hidden = false;
   }
@@ -68,6 +71,9 @@
     // hide result
     result.textContent = '';
     again.hidden = true;
+    // Show question and choices again
+    document.getElementById('question').style.display = 'block';
+    document.getElementById('choices').style.display = 'flex';
     // reset heart back to 1cm and restart growth
     startGrowth();
   }
@@ -80,7 +86,7 @@
     showResult(false);
   });
   again.addEventListener('click', function(){
-    resetScene();
+    window.location.href = 'index.html';
   });
 
   // Restart growth if window resized (recompute cover)
