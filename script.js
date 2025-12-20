@@ -105,3 +105,97 @@ async function start(){
 document.getElementById("restart").onclick = start;
 
 start();
+
+// Love section functionality
+let sizeMm = 10;
+let timer = null;
+
+function pxToMm(px) { return px * 25.4 / 96; }
+function mmToPx(mm) { return mm * 96 / 25.4; }
+
+function getCoverMm() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const diagPx = Math.sqrt(w*w + h*h);
+    return pxToMm(diagPx) * 1.05;
+}
+
+function applySize(mm) {
+    const heart = document.getElementById('heart');
+    if (heart) {
+        const px = Math.round(mmToPx(mm));
+        heart.style.width = px + 'px';
+        heart.style.height = px + 'px';
+    }
+}
+
+function stepGrowth() {
+    const coverMm = getCoverMm();
+    sizeMm += 1;
+    applySize(sizeMm);
+    if (sizeMm >= coverMm) {
+        clearInterval(timer);
+        timer = null;
+        applySize(Math.max(coverMm, sizeMm) * 1.05);
+    }
+}
+
+function startGrowth() {
+    if (timer) { clearInterval(timer); timer = null; }
+    sizeMm = 10;
+    applySize(sizeMm);
+    timer = setInterval(stepGrowth, 1000);
+}
+
+function stopGrowth() {
+    if (timer){ clearInterval(timer); timer = null; }
+}
+
+function showLoveSection() {
+    document.getElementById('loveSection').style.display = 'block';
+    startGrowth();
+}
+
+function hideLoveSection() {
+    document.getElementById('loveSection').style.display = 'none';
+    stopGrowth();
+}
+
+// Event listeners for love section
+document.addEventListener('DOMContentLoaded', function() {
+    const loveBtn = document.getElementById('loveBtn');
+    const yesBtn = document.getElementById('yes');
+    const noBtn = document.getElementById('no');
+    const againBtn = document.getElementById('again');
+    const result = document.getElementById('result');
+    
+    if (loveBtn) {
+        loveBtn.addEventListener('click', showLoveSection);
+    }
+    
+    if (yesBtn) {
+        yesBtn.addEventListener('click', function() {
+            stopGrowth();
+            result.textContent = '😊';
+            document.getElementById('question').style.display = 'none';
+            document.getElementById('choices').style.display = 'none';
+            againBtn.hidden = false;
+        });
+    }
+    
+    if (noBtn) {
+        noBtn.addEventListener('click', function() {
+            stopGrowth();
+            result.textContent = '🥲';
+            document.getElementById('question').style.display = 'none';
+            document.getElementById('choices').style.display = 'none';
+            againBtn.hidden = false;
+        });
+    }
+    
+    if (againBtn) {
+        againBtn.addEventListener('click', function() {
+            hideLoveSection();
+        });
+    }
+});
