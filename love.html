@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1" />
+  <title>My Love For You</title>
+  <link rel="stylesheet" href="assets/love.css" />
+</head>
+<body>
+  <main id="stage">
+    <div id="heart" class="heart" aria-hidden="true"></div>
+
+    <div id="overlay" role="dialog" aria-labelledby="question">
+      <p id="question">Do You Love me?</p>
+
+      <div id="choices">
+        <button id="yes" class="choice">Yes</button>
+        <button id="no" class="choice">No</button>
+      </div>
+
+      <div id="result" aria-live="polite"></div>
+
+      <button id="again" class="again" hidden>click me to see again</button>
+    </div>
+  </main>
+
+  <script src="assets/love.js"></script>
+</body>
+</html>
