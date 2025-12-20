@@ -94,7 +94,7 @@ async function start(){
     await typeMirrorText("happy birthday gorgeous");
     await showText("happy birthday gorgeous", "");
 
-    await showText("if you like it call me", "");
+    await showText("if you like it. Please call me 📞", "");
     
     
 
